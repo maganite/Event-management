@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, reverse
+from mainapp.settings import BASE_DIR
 from django.db import IntegrityError
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
@@ -21,7 +22,7 @@ def getdata(request):
         date = request.POST.get('date')
 
 
-        file_path = '~/Documents/Event-management-system/mainapp/files/dataset.csv'
+        file_path = BASE_DIR / 'files/dataset.csv'
         df = pd.read_csv(file_path, delimiter=',')
         df = df.astype(str)
         check=0
